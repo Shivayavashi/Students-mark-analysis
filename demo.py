@@ -24,6 +24,20 @@ st.set_page_config(layout="wide")
 client = init_connection()
 db = client.Excel
 
+
+@st.experimental_memo(ttl=600)
+def get_data():
+    items = db.demo.find()
+    items = list(items)  # make hashable for st.experimental_memo
+    return items
+
+items = get_data()
+
+# Print results.
+for item in items:
+    st.write(f"{item['id']} has a :{item['time']}:")
+    
+    
 def load_mongo_data(coll_name):
     a = db[coll_name]
     data = pd.DataFrame.from_records(a.find())
