@@ -2,3 +2,4 @@ plotly==5.9.0
 seaborn
 pymongo
 plost
+fpdf
