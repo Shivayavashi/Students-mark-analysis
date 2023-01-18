@@ -15,9 +15,14 @@ from fpdf import FPDF
 import plotly.io as pio
 figs = []
 
+
+@st.experimental_singleton(suppress_st_warning=True)
+def init_connection():
+    return MongoClient("mongodb+srv://st.secrets.DB_USERNAME:st.secrets.DB_PASSWORD@cluster0.phhdmbo.mongodb.net/?retryWrites=true&w=majority")
 st.set_page_config(layout="wide")
-client = MongoClient('mongodb://localhost:27017/Excel')
-db = client['Excel']
+
+client = init_connection()
+db = client.Excel
 
 def load_mongo_data(coll_name):
     a = db[coll_name]
