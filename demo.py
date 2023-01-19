@@ -35,7 +35,7 @@ items = get_data()
 
 # Print results.
 for item in items:
-    st.write(f"{item['id']} has a :{item['time']}:")
+    st.write(f"{item['_id']} has a :{item['time']}:")
     
     
 def load_mongo_data(coll_name):
