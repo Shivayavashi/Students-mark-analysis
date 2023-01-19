@@ -10,7 +10,7 @@ from pymongo import MongoClient
 import csv
 from datetime import datetime
 
-client = MongoClient('mongodb://localhost:27017/Excel')
+client = MongoClient('mongodb+srv://student:visualization@cluster0.phhdmbo.mongodb.net/?retryWrites=true&w=majority')
 db = client['Excel']
 
 t = st.sidebar.selectbox(
