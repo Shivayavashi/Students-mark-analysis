@@ -23,7 +23,7 @@ st.set_page_config(layout="wide")
 
 client = init_connection()
 db = client.Excel
-
+print(db)
 
 @st.experimental_memo(ttl=600)
 def get_data():
