@@ -273,7 +273,7 @@ if uploaded_file:
                 fig.append_trace(trace2, row=1, col=2)
                 st.write(fig)
         
-        client = MongoClient('mongodb://localhost:27017/Excel')
+        client = MongoClient('mongodb+srv://student:visualization@cluster0.phhdmbo.mongodb.net/?retryWrites=true&w=majority')
         db = client['Excel']
 
         def gio():
