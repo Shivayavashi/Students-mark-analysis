@@ -47,7 +47,6 @@ with st.form("my-form"):
     st.session_state["ques"]=ques
     topic = st.text_input('Topic name')
     st.session_state["topic"]=topic
-    submit = st.form_submit_button("Submit")
     df5['Card number'][0]= topic
     client = MongoClient('mongodb+srv://student:visualization@cluster0.phhdmbo.mongodb.net/?retryWrites=true&w=majority')
     db = client['Excel']
@@ -55,6 +54,8 @@ with st.form("my-form"):
     "topic":topic
     }
     db.demo.insert_one(doc_body)
+    submit = st.form_submit_button("Submit")
+    
 with st.form("Excel_form"):
         st.subheader("Fill the details below")
         var = 0
