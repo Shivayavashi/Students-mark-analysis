@@ -18,7 +18,8 @@ figs = []
 
 @st.experimental_singleton(suppress_st_warning=True)
 def init_connection():
-    return MongoClient("mongodb+srv://st.secrets.DB_USERNAME:st.secrets.DB_PASSWORD@cluster0.phhdmbo.mongodb.net/?retryWrites=true&w=majority")
+    return MongoClient("mongodb+srv://student:visualization@cluster0.phhdmbo.mongodb.net/?retryWrites=true&w=majority
+")
 st.set_page_config(layout="wide")
 
 client = init_connection()
