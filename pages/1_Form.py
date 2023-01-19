@@ -82,7 +82,7 @@ st.download_button(
          mime='text/csv',
 )
 
-client = MongoClient('mongodb://localhost:27017/Excel')
+client = MongoClient('mongodb+srv://student:visualization@cluster0.phhdmbo.mongodb.net/?retryWrites=true&w=majority')
 db = client['Excel']
 doc_body={
     "topic":topic
