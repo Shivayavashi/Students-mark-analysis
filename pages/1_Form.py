@@ -49,6 +49,12 @@ with st.form("my-form"):
     st.session_state["topic"]=topic
     submit = st.form_submit_button("Submit")
     df5['Card number'][0]= topic
+    client = MongoClient('mongodb+srv://student:visualization@cluster0.phhdmbo.mongodb.net/?retryWrites=true&w=majority')
+    db = client['Excel']
+    doc_body={
+    "topic":topic
+    }
+    db.demo.insert_one(doc_body)
 with st.form("Excel_form"):
         st.subheader("Fill the details below")
         var = 0
@@ -82,9 +88,4 @@ st.download_button(
          mime='text/csv',
 )
 
-client = MongoClient('mongodb+srv://student:visualization@cluster0.phhdmbo.mongodb.net/?retryWrites=true&w=majority')
-db = client['Excel']
-doc_body={
-    "topic":topic
-}
-db.demo.insert_one(doc_body)
+
