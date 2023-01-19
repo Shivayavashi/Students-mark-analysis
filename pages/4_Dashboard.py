@@ -16,7 +16,7 @@ import plotly.io as pio
 figs = []
 
 st.set_page_config(layout="wide")
-client = MongoClient('mongodb://localhost:27017/Excel')
+client = MongoClient('mongodb+srv://student:visualization@cluster0.phhdmbo.mongodb.net/?retryWrites=true&w=majority')
 db = client['Excel']
 
 def load_mongo_data(coll_name):
