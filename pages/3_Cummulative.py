@@ -108,6 +108,7 @@ if t == 'Date wise':
             df3["First name"] = data[j]["First name"]
             df4["First name"] = data[j]["First name"]
             columns = (data[j].shape[1])-7
+            st.write(columns)
             b = []
             for i in range(columns):
                 b.append('Q' + str(i+1))
