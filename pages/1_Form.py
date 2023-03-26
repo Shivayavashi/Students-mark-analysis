@@ -11,8 +11,8 @@ import datetime
 from pymongo import MongoClient
 
 st.set_page_config(page_title='Excel Plotie')
-st.title('Excel Plotie 👾')
-st.title("Fill the below form")
+st.title('FORM 📝')
+
 
 first_column = [""]
 second_column = [""]
@@ -41,25 +41,17 @@ if "date" not in st.session_state:
 
     
 with st.form("my-form"):
+    st.subheader("Fill the form with the number of questions,date and topic and click submit")
     curr_date= st.date_input("Enter Date (YYYY/MM/DD)")
     st.session_state["date"]=curr_date
     ques = st.number_input('Enter the no of questions', min_value=1, max_value=20, value=1, step=0)
     st.session_state["ques"]=ques
     topic = st.text_input('Topic name')
     st.session_state["topic"]=topic
-    df5['Card number'][0]= topic
     submit = st.form_submit_button("Submit")
-            
-if submit:
-    client = MongoClient('mongodb+srv://student:visualization@cluster0.phhdmbo.mongodb.net/?retryWrites=true&w=majority')
-    db = client['Excel']
-    doc_body={
-    "topic":topic
-    }
-    db.demo.insert_one(doc_body)
-            
+    df5['Card number'][0]= topic
 with st.form("Excel_form"):
-        st.subheader("Fill the details below")
+        st.subheader("Choose the Blooms taxonomy levels for each question and click submit")
         var = 0
         for i in range(0,ques):
                 st.write(questions[var])
@@ -74,6 +66,8 @@ with st.form("Excel_form"):
         
 st.session_state["columns"]=columns
 
+#if submit:
+    #get_data().append({"No of questions": ques})
 
 st.write(df5)
 @st.cache
@@ -81,13 +75,21 @@ def convert_df(df):
     return df.to_csv().encode('utf-8')
 
 csv = convert_df(df5)
-st.subheader("Download the data and fill the details as shown in the below image template.")
+st.subheader("Download the data and fill the details as shown in the below image teamplate.")
 st.download_button(
         label="Download data as CSV",
         data=csv,
-        file_name='large_df.csv',
+        file_name='visualization_template.csv',
          mime='text/csv',
 )
+
+client = MongoClient('mongodb+srv://student:visualization@cluster0.phhdmbo.mongodb.net/?retryWrites=true&w=majority')
+db = client['Excel']
+doc_body={
+    "topic":topic
+}
+db.demo.insert_one(doc_body)
+
 import streamlit as st
 from PIL import Image
 
