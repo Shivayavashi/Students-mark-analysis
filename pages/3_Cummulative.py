@@ -169,7 +169,7 @@ if t == 'Date wise':
 
         plt.xticks(X_axis, r)
         plt.xlabel("Date")
-        plt.ylabel("cognitive performance")
+        plt.ylabel("Cognitive performance")
         plt.title("Cognitive level performance over the week")
         plt.legend()
 
@@ -225,12 +225,11 @@ elif t == 'Topic wise':
     df = pd.DataFrame(
     {'Topic': topic, 'Score': mark})
     dff = df.groupby("Topic").Score.mean().reset_index()
-    st.subheader("Bar polar representation of topic percent")
+    st.markdown("<h4 style='text-align: center; color: white;'>TOPIC PERCENT OUT OF 100</h4>",  unsafe_allow_html=True)
     import plotly.express as px
     fig = px.bar_polar(dff, r="Score", theta="Topic",
                    color="Score", template="plotly_dark",
                    color_discrete_sequence= px.colors.sequential.Plasma_r)
     st.write(fig)
-    st.subheader("Horizontal")
     fig=px.bar(dff,x='Score',y='Topic', orientation='h',color='Topic',color_discrete_sequence=px.colors.qualitative.Set3)
     st.write(fig)
