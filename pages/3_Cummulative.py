@@ -149,7 +149,8 @@ if t == 'Date wise':
                     b = df4[j][1]
                     f = np.where(b == d, score2+1, score2+0)
                     score_fin2 = score_fin2+f
-
+            st.write(score_fin1)
+            st.write(n)
             lower = (score_fin1/(n*40))*100
             higher = (score_fin2/(m*40))*100
 
