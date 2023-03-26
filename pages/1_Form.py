@@ -88,5 +88,9 @@ st.download_button(
         file_name='large_df.csv',
          mime='text/csv',
 )
+import streamlit as st
+from PIL import Image
 
+image = Image.open('template.jpeg')
 
+st.image(image, caption='Sample Template')
