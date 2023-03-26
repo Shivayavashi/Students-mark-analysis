@@ -126,6 +126,8 @@ if t == 'Date wise':
                 elif (a == "Analyse"):
                     df4[i] = data[j][i]
                     m = m+1
+            st.write(m)
+            st.write(n)
             col1 = []
             col2 = []
             col1 = df3.columns[1:]
