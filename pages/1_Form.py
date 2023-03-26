@@ -81,7 +81,7 @@ def convert_df(df):
     return df.to_csv().encode('utf-8')
 
 csv = convert_df(df5)
-st.subheader("Download the data and fill the details as shown in the below image teamplate.")
+st.subheader("Download the data and fill the details as shown in the below image template.")
 st.download_button(
         label="Download data as CSV",
         data=csv,
