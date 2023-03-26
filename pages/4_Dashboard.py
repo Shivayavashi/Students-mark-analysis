@@ -16,7 +16,7 @@ import plotly.io as pio
 figs = []
 
 st.set_page_config(layout="wide")
-client = MongoClient('mongodb+srv://student:visualization@cluster0.phhdmbo.mongodb.net/?retryWrites=true&w=majority')
+client =  MongoClient('mongodb+srv://student:visualization@cluster0.phhdmbo.mongodb.net/?retryWrites=true&w=majority')
 db = client['Excel']
 
 def load_mongo_data(coll_name):
@@ -42,7 +42,7 @@ c2,c3=st.columns((0.1,0.1))
 
 
 with c2:
-    st.markdown("<h4 style='text-align: center; color: white;'>Cognitive percentage</h4>",  unsafe_allow_html=True)
+    st.markdown("<h4 style='text-align: center; color: white;'>Cognitive Level Percentage</h4>",  unsafe_allow_html=True)
     df=data1
     df3=pd.DataFrame()
     df4=pd.DataFrame()
@@ -121,7 +121,7 @@ with c2:
 
 with a2:
         
-        st.markdown("<h4 style='text-align: center; color: white;'>Scores pie</h4>",  unsafe_allow_html=True)
+        st.markdown("<h4 style='text-align: center; color: white;'>Categorization of students based on score</h4>",  unsafe_allow_html=True)
         df2 = data1.replace(['absent','<NA>'], 0)
         df2['Score'] = df2['Score'].map(lambda x: str(x).rstrip('%')).astype(float) 
         bins = [0,40,50,60,70,80,90,100]
@@ -135,13 +135,12 @@ with a2:
 
 
 with a1:
-    st.markdown("<h4 style='text-align: center; color: white;'>Scores bar</h4>",  unsafe_allow_html=True)
+    st.markdown("<h4 style='text-align: center; color: white;'>Student Scores</h4>",  unsafe_allow_html=True)
     top_10 = data1['Correct'].value_counts()
     state_total_graph = px.bar(
         top_10,
         color=top_10)
     state_total_graph.update_layout(
-    title="Scores of Students",
     xaxis_title="Scores",
     yaxis_title="Number of students",
     legend_title="Score",
@@ -248,7 +247,7 @@ with d2:
     dff = load_data()
     st.text('\n')  
     st.text('\n')
-    st.markdown("<h4 style='text-align: center; color: white;'>Student with low scores</h4>",  unsafe_allow_html=True)
+    st.markdown("<h4 style='text-align: center; color: white;'>Attention required Students</h4>",  unsafe_allow_html=True)
     dff.drop(index=df.index[0], axis=0, inplace=True)
     #dff=dff.sort_values(by=['No of correct'])
     st.table(dff)
