@@ -16,13 +16,12 @@ from datetime import date
 
 if "uploaded_file" not in st.session_state:
     st.session_state["uploaded_file"]=""
-
-uploaded_file = st.file_uploader('choose a file',type = 'csv')
+st.subheader("Upload the visualization template file")
+uploaded_file = st.file_uploader('Upload the file',type = 'csv')
 
 if uploaded_file:
         df = pd.read_csv(uploaded_file)
         st.session_state["uploaded_file"]=df
-        st.dataframe(df)
 
         col = (df.shape[1])-7
         columns = []
@@ -49,7 +48,6 @@ if uploaded_file:
             n=col
             df2=df
             df2=df2.sort_values('First name')
-            st.write(df2)
             fig = plt.figure(figsize=(20,10))
             ax = fig.add_subplot(1,1,1)
             x = np.arange(1, 42, 1)
@@ -106,7 +104,8 @@ if uploaded_file:
         }
     )
             dff = load_data()
-            st.dataframe(dff)
+            st.markdown("<h4 style='text-align: center; color: white;'>Attention required Students</h4>",  unsafe_allow_html=True)
+            st.table(dff)
             
             df2 = df2.replace(['absent','<NA>'], 0)
          
@@ -116,7 +115,8 @@ if uploaded_file:
             group_names=['1-40','41-50','51-60','61-70','71-80','81-90','91-100']
             
             top_10 = pd.cut(df2['Score'],bins=bins,labels=group_names)
-            fig = px.pie(top_10, names='Score', title='Pie representation of Scores')
+            st.markdown("<h4 style='text-align: center; color: white;'> Categorization of students based on scores</h4>",  unsafe_allow_html=True)
+            fig = px.pie(top_10, names='Score')
             st.write(fig)
     
         elif option == "Concept with less understanding":
@@ -129,16 +129,20 @@ if uploaded_file:
                 df["Diff"] = np.where((df[i]!=a),"Incorrect","Correct")
                 df3[i]=df["Diff"]
                 df=df2
-            st.write(df3)
             fig = plt.figure(figsize=(10, 4))
             ax=sns.countplot(x="variable", hue="value", data=pd.melt(df3),palette=['#432371',"#FAAE7B"])
             ax.set(xlabel="Questions",ylabel="Count")
             st.pyplot(fig) 
-            st.write("The questions with less understanding are:")
+            ab=0
+            k=0
             for i in columns:
                 if(df3[i].value_counts()['Incorrect']>df3[i].value_counts()['Correct']):
                     ab = i
-                    st.write(ab+" - "+df[i][0] )
+                    k=k+1
+                    value=ab+" - "+df[i][0]
+                    st.markdown("<h6 style='text-align: center; color: white;'>"+value+"</h6>",  unsafe_allow_html=True)
+            if(k!=0):
+                st.markdown("<h6 style='text-align: center; color: white;'>Require more attention !!!</h6>",  unsafe_allow_html=True)
                     
 
         elif option == "Cognitive level":
