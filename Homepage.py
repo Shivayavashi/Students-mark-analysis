@@ -22,9 +22,9 @@ with placeholder.form("login"):
     submit = st.form_submit_button("Sign_in")
 if submit:    
     client = MongoClient('mongodb+srv://student:visualization@cluster0.phhdmbo.mongodb.net/?retryWrites=true&w=majority')
-    db = client['Login']
+    db = client['Excel']
     doc_body={
         "email":email,
         "password":password
     }
-    db.demo.insert_one(doc_body)
+    db.Login.insert_one(doc_body)
