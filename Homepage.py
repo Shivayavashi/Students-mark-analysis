@@ -22,7 +22,7 @@ with placeholder.form("login"):
 client = MongoClient('mongodb+srv://student:visualization@cluster0.phhdmbo.mongodb.net/?retryWrites=true&w=majority')
 db = client['Login']
 doc_body={
-    "email":email
+    "email":email,
     "password":password
 }
 db.demo.insert_one(doc_body)
