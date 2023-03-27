@@ -20,11 +20,11 @@ with placeholder.form("login"):
     email = st.text_input("Email")
     password = st.text_input("Password", type="password")
     submit = st.form_submit_button("Sign_in")
-    
-client = MongoClient('mongodb+srv://student:visualization@cluster0.phhdmbo.mongodb.net/?retryWrites=true&w=majority')
-db = client['Login']
-doc_body={
-    "email":email,
-    "password":password
-}
-db.demo.insert_one(doc_body)
+if submit:    
+    client = MongoClient('mongodb+srv://student:visualization@cluster0.phhdmbo.mongodb.net/?retryWrites=true&w=majority')
+    db = client['Login']
+    doc_body={
+        "email":email,
+        "password":password
+    }
+    db.demo.insert_one(doc_body)
