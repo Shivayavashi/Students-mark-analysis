@@ -12,7 +12,7 @@ st.write("Go to form section and fill the form and upload it to get your visuali
 # Connect to the DB.
 @st.experimental_singleton
 def connect_db():
-    client = MongoClient('mongodb://localhost:27017/Excel')
+    client =  MongoClient('mongodb+srv://student:visualization@cluster0.phhdmbo.mongodb.net/?retryWrites=true&w=majority')
     db = client.get_database('Login')
     return db.User
 
