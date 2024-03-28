@@ -261,17 +261,17 @@ if st.session_state.username != '':
         for j in lists:
             collection = db[j]
             data[j] = pd.DataFrame.from_records((collection.find()))
-            if (data[j]['Card number'][0]) in options:
+            if (data[j]["Card number"][0]) in options:
                 data1[k] = data[j]
                 k = k + 1
                 col_count.append((data[j].shape[1])-7)
-                data[j]['Score'] = data[j]['Score'].replace(['absent', '<NA>'], 0)
-                data[j]['Score'] = data[j]['Score'].map(
+                data[j]["Score"] = data[j]["Score"].replace(["absent", "<NA>"], 0)
+                data[j]["Score"] = data[j]["Score"].map(
                 lambda x: str(x).rstrip('%')).astype(float)
-                m = data[j]['Score'].sum()
+                m = data[j]["Score"].sum()
                 n = (m/40)
                 mark.append(n)
-                topic.append(data[j]['Card number'][0])
+                topic.append(data[j]["Card number"][0])
     
     
 
