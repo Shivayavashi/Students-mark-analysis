@@ -3,3 +3,4 @@ seaborn
 pymongo
 plost
 fpdf
+pandas
