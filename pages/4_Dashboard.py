@@ -35,7 +35,7 @@ if st.session_state.username != '':
     figs = []
 
     
-    client =  MongoClient('mongodb+srv://student:visualization@cluster0.phhdmbo.mongodb.net/?retryWrites=true&w=majority')
+    client =  MongoClient('mongodb+srv://student:BkZU3akDij4V8tMs@cluster0.phhdmbo.mongodb.net/?retryWrites=true&w=majority')
     db = client['Excel']
 
     def load_mongo_data(coll_name):
